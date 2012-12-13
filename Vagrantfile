@@ -7,17 +7,18 @@
 Vagrant::Config.run do |config|
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
-  config.vm.customize ["--cpus", 2, "--memory", 2000]
+  config.vm.customize ["modifyvm", :id, "--cpus", "2"]
+  config.vm.customize ["modifyvm", :id, "--memory", "2000"]
   
   config.vm.define :ckan do |ckan_config|
 	ckan_config.vm.network :hostonly, "192.168.0.3"
 	# config.vm.network :bridged
-	ckan_config.vm.forward_port 80, 8882
+	ckan_config.vm.forward_port 80, 8888
 	# config.vm.share_folder "ckan-data", "/home/vagrant/ckan", "../shared_data"
 	
 	ckan_config.vm.provision :chef_solo do |chef|
 		chef.cookbooks_path = "cookbooks"
-		chef.add_recipe "apt"	
+		chef.add_recipe "apt"
 		chef.add_recipe "git"		
 		chef.add_recipe "openssl"		
 		chef.add_recipe "build-essential"		
@@ -27,4 +28,5 @@ Vagrant::Config.run do |config|
 		chef.json = { :postgresql => { :password => { :postgres => "secret" } } }
 	end
   end
+
 end
