@@ -17,11 +17,8 @@ http://files.vagrantup.com/precise32.box
 [yum](https://github.com/opscode-cookbooks/yum.git)
 [java](https://github.com/opscode-cookbooks/java.git)
 
-If 'java' does not work, modify Line 30 in 'recipes/openjdk.rb':
-'''
--    "default" => ["openjdk#{jdk_version}","default-jre-headless"]	
-+    "default" => ["openjdk-#{jdk_version}-jdk","default-jre-headless"]
-'''
+If `java` does not work, modify Line 30 `"default" => ["openjdk#{jdk_version}","default-jre-headless"]` in `recipes/openjdk.rb` as `"default" => ["openjdk-#{jdk_version}-jdk","default-jre-headless"]`
+
 
 
 
