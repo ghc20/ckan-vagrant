@@ -1,9 +1,0 @@
-﻿cookbooks/apt/
-cookbooks/build-essential/
-cookbooks/git/
-cookbooks/java/
-cookbooks/openssl/
-cookbooks/postgresql/
-cookbooks/python/
-cookbooks/yum/
-cookbooks/apt/

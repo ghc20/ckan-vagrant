@@ -7,8 +7,11 @@
 Vagrant::Config.run do |config|
   config.vm.box = "precise32"
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  
   config.vm.customize ["modifyvm", :id, "--cpus", "2"]
   config.vm.customize ["modifyvm", :id, "--memory", "2000"]
+  config.vm.customize ["modifyvm", :id, "--vram", "128"]
+  config.vm.customize ["modifyvm", :id, "--accelerate3d", "on"]
   
   config.vm.define :ckan do |ckan_config|
 	ckan_config.vm.network :hostonly, "192.168.0.3"
